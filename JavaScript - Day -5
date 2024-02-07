@@ -1,0 +1,79 @@
+let resume = {
+  name: "John Doe",
+  contact: {
+    email: "johndoe@example.com",
+    phone: "123-456-7890",
+  },
+  education: [
+    {
+      institution: "University of XYZ",
+      degree: "Bachelor of Science",
+      field: "Computer Science",
+      graduationYear: 2018,
+    },
+    {
+      institution: "ABC High School",
+      degree: "High School Diploma",
+      graduationYear: 2014,
+    },
+  ],
+  experience: [
+    {
+      company: "XYZ Corp",
+      position: "Software Engineer",
+      startDate: "Jan 2019",
+      endDate: "Present",
+      responsibilities: [
+        "Develop and maintain web applications",
+        "Collaborate with cross-functional teams to define, design, and ship new features",
+        "Write clean, maintainable, and testable code",
+      ],
+    },
+   
+  skills: [
+    "JavaScript",
+    "React",
+    "Node.js",
+    "Git",
+    "SQL",
+    "Python",
+  ],
+};
+
+// Iterating using for-in loop
+for (let key in resume) {
+  console.log(`Key: ${key}`);
+  if (typeof resume[key] === "object") {
+    console.log(`Value (object):`);
+    for (let key2 in resume[key]) {
+      console.log(`- ${key2}: ${resume[key][key2]}`);
+    }
+  } else {
+    console.log(`Value: ${resume[key]}`);
+  }
+}
+
+// Iterating using for-of loop
+for (let keyValue of Object.entries(resume)) {
+  console.log(`Key: ${keyValue[0]}`);
+  let keyValueObj = keyValue[1];
+  if (typeof keyValueObj === "object") {
+    for (let keyValue2 of Object.entries(keyValueObj)) {
+      console.log(`- ${keyValue2[0]}: ${keyValue2[1]}`);
+    }
+  } else {
+    console.log(`Value: ${keyValueObj}`);
+  }
+}
+
+// Iterating using forEach loop
+Object.entries(resume).forEach(([key, value]) => {
+  console.log(`Key: ${key}`);
+  if (typeof value === "object") {
+    Object.entries(value).forEach(([key2, value2]) => {
+      console.log(`- ${key2}: ${value2}`);
+    });
+  } else {
+    console.log(`Value: ${value}`);
+  }
+});
